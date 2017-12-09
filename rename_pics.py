@@ -27,19 +27,30 @@ def make_description():
     result.append("YYYYMMDD.")
     return " ".join(result)
 
-def rename_pic(ifilename, opt):
-    im = pyexivinfo.information(ifilename)
-    dt = datetime.strptime("%Y:%m:%d %H:%M:%S", im["EXIF:CreateDate"])
-    if opt.full:
-        tag = "{}{:02d}{:02d}".format(dt.year, dt.month, dt.day)
+def rename_pic(ifilename, opt, label="I"):
+    im = pyexifinfo.information(ifilename)
+    pic_time = im["EXIF:DateTimeOriginal"]
+    dt = datetime.strptime(pic_time, "%Y:%m:%d %H:%M:%S")
+    if label == "I":
+        if opt.full:
+            tag = "{}{:02d}{:02d}".format(dt.year, dt.month, dt.day)
+        else:
+            tag = "{:X}{:02d}".format(dt.month, dt.day)
+        ofilename = "{}{}{}".format(label, tag.upper(), ifilename.split('_')[-1])
     else:
-        tag = "%x%02d" % (dt.month, dt.day)
-    ofilename = "I%s%s" % (tag.upper(), ifilename.split('_')[-1])
+        if opt.full:
+            tag = "{}{:02d}{:02d}{:02d}{:02d}{:02d}".format(dt.year, dt.month,
+                                                            dt.day, dt.hour,
+                                                            dt.minute, dt.second)
+        else:
+            tag = "{:X}{:02d}{:02d}{:02d}{:02d}".format(dt.month, dt.day, dt.hour,
+                                                        dt.minute, dt.second)
+        ofilename = "{}{}.{}".format(label, tag.upper(), ifilename.split('.')[-1])
     if opt.debug:
-        print ofilename
+        print(ofilename)
     else:
         os.rename(ifilename, ofilename)
-    os.chmod(ofilename, 0o644)
+        os.chmod(ofilename, 0o644)
 
 def check_filename(filename):
     return filename.lower().endswith('.jpg') or \
@@ -49,8 +60,14 @@ def check_filename(filename):
 def run(opts):
     for pfile in os.listdir('.'):
         if os.path.isfile(pfile) and check_filename(pfile):
+            if opts.debug:
+                print(pfile)
             if pfile.startswith('IMG'):
                 rename_pic(pfile, opts)
+            elif pfile[0].isdigit() or pfile.startswith("Photo"):
+                rename_pic(pfile, opts, label="V")
+            else:
+                print("Don't know how to handle {}".format(pfile))
 
 if __name__ == "__main__":
     import optparse
