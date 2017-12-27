@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
+import argparse
 from datetime import datetime
 import pyexifinfo
-import optparse
 import os
 import sys
 
@@ -38,13 +38,15 @@ def run(opts):
                 pass
 
 if __name__ == "__main__":
-    parser = optparse.OptionParser("usage: %prog [options]",
-                                   version=VERSION,
-                                   description=make_description())
+    default_format = argparse.ArgumentDefaultsHelpFormatter
+    parser = argparse.ArgumentParser(description=make_description(),
+                                     formatter_class=default_format)
 
-    parser.add_option("-d", "--debug", dest="debug", action="store_true",
-                      help="Debug the program.")
+    parser.add_argument("-d", "--debug", dest="debug", action="store_true",
+                        help="Debug the program.")
+    parser.add_argument("--version", action="version",
+                        version="%(prog)s {}".format(VERSION))
     parser.set_defaults(debug=False)
 
-    (options, args) = parser.parse_args()
-    run(options)
+    args = parser.parse_args()
+    run(args)

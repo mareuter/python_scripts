@@ -5,7 +5,7 @@
 # Author: Michael Reuter
 # Date: December 1, 2017
 #
-# Script to rename picture files by reading the EXIF tags. 
+# Script to rename picture files by reading the EXIF tags.
 #
 # Uses pyexifinfo.
 #
@@ -13,6 +13,7 @@
 
 VERSION="1.0.0"
 
+import argparse
 from datetime import datetime
 import pyexifinfo
 import os
@@ -70,17 +71,17 @@ def run(opts):
                 print("Don't know how to handle {}".format(pfile))
 
 if __name__ == "__main__":
-    import optparse
-    
-    parser = optparse.OptionParser("usage: %prog [options]",
-                                   version=VERSION,
-                                   description=make_description())
+    default_format = argparse.ArgumentDefaultsHelpFormatter
+    parser = argparse.ArgumentParser(description=make_description(),
+                                     formatter_class=default_format)
 
-    parser.add_option("-d", "--debug", dest="debug", action="store_true",
-                      help="Debug the program.")
-    parser.add_option("-f", "--full", dest="full", action="store_true",
-                      help="Make tag YYYYMMDD.")
+    parser.add_argument("-d", "--debug", dest="debug", action="store_true",
+                        help="Debug the program.")
+    parser.add_argument("-f", "--full", dest="full", action="store_true",
+                        help="Make tag YYYYMMDD.")
+    parser.add_argument("--version", action="version",
+                        version="%(prog)s {}".format(VERSION))
     parser.set_defaults(debug=False, full=False)
 
-    (options, args) = parser.parse_args()
-    run(options)
+    args = parser.parse_args()
+    run(args)
