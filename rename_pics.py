@@ -11,12 +11,13 @@
 #
 ###############################################################################
 
-VERSION="1.0.0"
-
 import argparse
 from datetime import datetime
-import pyexifinfo
 import os
+import pyexifinfo
+
+VERSION = "1.0.0"
+
 
 def make_description():
     result = []
@@ -27,6 +28,7 @@ def make_description():
     result.append("is left alone. An option can be used to make the string")
     result.append("YYYYMMDD.")
     return " ".join(result)
+
 
 def rename_pic(ifilename, opt, label="I"):
     im = pyexifinfo.information(ifilename)
@@ -53,10 +55,12 @@ def rename_pic(ifilename, opt, label="I"):
         os.rename(ifilename, ofilename)
         os.chmod(ofilename, 0o644)
 
+
 def check_filename(filename):
     return filename.lower().endswith('.jpg') or \
            filename.lower().endswith('.tif') or \
            filename.lower().endswith('.cr2')
+
 
 def run(opts):
     for pfile in os.listdir('.'):
@@ -69,6 +73,7 @@ def run(opts):
                 rename_pic(pfile, opts, label="V")
             else:
                 print("Don't know how to handle {}".format(pfile))
+
 
 if __name__ == "__main__":
     default_format = argparse.ArgumentDefaultsHelpFormatter
