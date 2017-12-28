@@ -18,7 +18,22 @@ SCOPES = 'https://www.googleapis.com/auth/calendar'
 CLIENT_SECRET_FILE = '~/.clients/client_secret.json'
 APPLICATION_NAME = 'Race Training Scheduler'
 
+
 def create_training_event(tday, tsummary):
+    """Create a training event dictionary
+
+    Parameters
+    ----------
+    tday : datetime
+        The date/time object for the current training event.
+    tsummary : str
+        The training event activity.
+
+    Returns
+    -------
+    dict
+        The event information in dictionary form.
+    """
     tday_str = tday.date().isoformat()
     event = {
         'summary': tsummary,
@@ -27,61 +42,112 @@ def create_training_event(tday, tsummary):
         },
         'end': {
             'date': tday_str
-        } 
+        }
     }
     return event
 
+
 def get_calendar_id(api, calendar_name):
+    """Get the Id for the requested calendar.
+
+    Parameters
+    ----------
+    api : Resource
+        The object representing the API.
+    calendar_name : str
+        The text name of the requested calendar.
+
+    Returns
+    -------
+    str
+        The Id of the requested calendar.
+    """
     calendar_list = api.calendarList().list().execute()
     for calendar_list_entry in calendar_list['items']:
         if calendar_name == calendar_list_entry['summary']:
             break
     return calendar_list_entry['id']
 
-def get_credentials(flags=None):
+
+def get_credentials(flags):
     """Gets valid user credentials from storage.
 
     If nothing has been stored, or if the stored credentials are invalid,
     the OAuth2 flow is completed to obtain the new credentials.
 
-    Returns:
-        Credentials, the obtained credential.
+    Parameters
+    ----------
+    flags : namespace
+        The object containing the command-line arguments.
+
+    Returns
+    -------
+    Credentials
+        The obtained credential.
     """
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir,
-                                   'race_training_scheduler.json')
+    credential_path = os.path.join(credential_dir, 'race_training_scheduler.json')
 
     store = Storage(credential_path)
     credentials = store.get()
     if not credentials or credentials.invalid:
-        flow = client.flow_from_clientsecrets(os.path.expanduser(CLIENT_SECRET_FILE),
-                                              SCOPES)
+        flow = client.flow_from_clientsecrets(os.path.expanduser(CLIENT_SECRET_FILE), SCOPES)
         flow.user_agent = APPLICATION_NAME
         if flags:
             credentials = tools.run_flow(flow, store, flags)
-        else: # Needed only for compatibility with Python 2.6
+        else:  # Needed only for compatibility with Python 2.6
             credentials = tools.run(flow, store)
         print('Storing credentials to ' + credential_path)
     return credentials
 
+
 def fix_path(ifilename):
+    """Expand all special markers in a path.
+
+    Parameters
+    ----------
+    ifilename : str
+        The current path, possibly containing special markers.
+
+    Returns
+    -------
+    str
+        The current path with the special markers expanded to path elements.
+    """
     return os.path.expanduser(os.path.expandvars(ifilename))
 
+
 def make_description():
+    """Create the program description paragraph.
+
+    Returns
+    -------
+    str
+        The program description paragraph.
+    """
     result = []
-    result.append("This script takes a race date (YYYY/MM/DD) and a training")
-    result.append("schedule and places it in a Google calendar.")
+    result.append("This script takes a race date (YYYY/MM/DD) and a training schedule and places it in ")
+    result.append("a Google calendar. The training schedule should be in CSV format with 7 columns. The ")
+    result.append("number of rows should be the number of weeks in the training program plus one for the ")
+    result.append("days of the week column header at the top of the file.")
     return " ".join(result)
 
+
 def run(opts):
+    """Run the main program elements.
+
+    Parameters
+    ----------
+    opts : namespace
+        The object containing the options from the command-line.
+    """
     race_day = datetime.strptime(opts.race_day, "%Y/%m/%d")
     day_offset = 6 - race_day.weekday()
 
-    training_schedule = pandas.read_csv(fix_path(opts.training_schedule),
-                                        index_col=0)
+    training_schedule = pandas.read_csv(fix_path(opts.training_schedule), index_col=0)
 
     num_weeks = training_schedule.shape[0]
     start_day = race_day + timedelta(weeks=-num_weeks, days=day_offset)
@@ -94,7 +160,7 @@ def run(opts):
 
     for week, row in training_schedule.iterrows():
         print("Week {}".format(week))
-            
+
         for run in row:
             if opts.debug:
                 print(training_day.date().isoformat())
@@ -102,31 +168,28 @@ def run(opts):
                 print('Resting')
             else:
                 training_event = create_training_event(training_day, run)
-                cal_event = service.events().insert(calendarId=calendar_id,
-                                                    body=training_event).execute()
+                cal_event = service.events().insert(calendarId=calendar_id, body=training_event).execute()
                 print(run)
                 if opts.debug:
                     print(cal_event['id'])
 
             training_day += timedelta(days=1)
 
+
 if __name__ == '__main__':
     default_format = argparse.ArgumentDefaultsHelpFormatter
-    parser = argparse.ArgumentParser(description=make_description(),
-                                     formatter_class=default_format,
+    # The parents keyword needs to be used in order to add command-line arguments from the OAuth2 package.
+    parser = argparse.ArgumentParser(description=make_description(), formatter_class=default_format,
                                      parents=[tools.argparser])
 
     parser.add_argument("-d", "--debug", dest="debug", action="store_true",
                         help="Debug the program.")
-    parser.add_argument("-c", "--cal-name", dest="calendar_name",
-                        default="Running",
+    parser.add_argument("-c", "--cal-name", dest="calendar_name", default="Running",
                         help="Set the name of the Google Calendar")
     parser.add_argument("--version", action="version",
                         version="%(prog)s {}".format(VERSION))
-    parser.add_argument("race_day", help="The date of the race in YYYY/MM/DD"
-                        " format")
-    parser.add_argument("training_schedule", help="The training schedule to"
-                        "ingest. Should be in CSV format.")
+    parser.add_argument("race_day", help="The date of the race in YYYY/MM/DD format")
+    parser.add_argument("training_schedule", help="The training schedule to ingest. Should be in CSV format.")
 
     args = parser.parse_args()
 
