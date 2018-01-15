@@ -59,6 +59,7 @@ def rename_pic(ifilename, opt, label="I"):
 def check_filename(filename):
     return filename.lower().endswith('.jpg') or \
            filename.lower().endswith('.tif') or \
+           filename.lower().endswith('.tiff') or \
            filename.lower().endswith('.cr2')
 
 
