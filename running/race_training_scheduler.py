@@ -47,6 +47,30 @@ def create_training_event(tday, tsummary):
     return event
 
 
+def find_start_day(rday, tschedule):
+    """Find the training start day from knowing the race day and training
+       schedule.
+
+    Parameters
+    ----------
+    rday : str
+        The race day in YYYY/MM/DD format.
+    tschedule : pandas.DataFrame
+        The object containing the training schedule.
+
+    Returns
+    -------
+    datetime
+        The object containing the training start day.
+    """
+    race_day = datetime.strptime(rday, "%Y/%m/%d")
+    day_offset = 6 - race_day.weekday()
+
+    num_weeks = tschedule.shape[0]
+    start_day = race_day + timedelta(weeks=-num_weeks, days=day_offset)
+    return start_day
+
+
 def get_calendar_id(api, calendar_name):
     """Get the Id for the requested calendar.
 
@@ -144,14 +168,12 @@ def run(opts):
     opts : namespace
         The object containing the options from the command-line.
     """
-    race_day = datetime.strptime(opts.race_day, "%Y/%m/%d")
-    day_offset = 6 - race_day.weekday()
-
     training_schedule = pandas.read_csv(fix_path(opts.training_schedule), index_col=0)
+    training_day = find_start_day(opts.race_day, training_schedule)
 
-    num_weeks = training_schedule.shape[0]
-    start_day = race_day + timedelta(weeks=-num_weeks, days=day_offset)
-    training_day = start_day
+    if opts.start_only:
+        print("Training Start:", training_day.strftime("%Y-%m-%d"))
+        return
 
     credentials = get_credentials(opts)
     http = credentials.authorize(httplib2.Http())
@@ -188,6 +210,8 @@ if __name__ == '__main__':
                         help="Set the name of the Google Calendar")
     parser.add_argument("--version", action="version",
                         version="%(prog)s {}".format(VERSION))
+    parser.add_argument("-s", "--start-only", dest="start_only", action="store_true",
+                        help="Print the training start day and exit.")
     parser.add_argument("race_day", help="The date of the race in YYYY/MM/DD format")
     parser.add_argument("training_schedule", help="The training schedule to ingest. Should be in CSV format.")
 
