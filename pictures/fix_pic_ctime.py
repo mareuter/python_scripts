@@ -19,6 +19,7 @@ def make_description():
 def check_filename(filename):
     return filename.lower().endswith('.jpg') or \
         filename.lower().endswith('.tif') or \
+        filename.lower().endswith('.tiff') or \
         filename.lower().endswith('.cr2') or \
         filename.lower().endswith('.orf')
 
