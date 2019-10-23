@@ -33,8 +33,14 @@ end_month_tax = tax - begin_month_tax
 begin_month_tax_str = f"{begin_month_tax:.2f}"
 end_month_tax_str = f"{end_month_tax:.2f}"
 tax_str = f"{(float(begin_month_tax_str) + float(end_month_tax_str)):.2f}"
+original_tax_str = f"{tax:.2f}"
 
-assert str(tax) == tax_str
+try:
+    assert original_tax_str == tax_str
+except AssertionError:
+    print(f"Original tax: {original_tax_str}")
+    print(f"Calculated sum: {tax_str}")
+    raise
 
 print(f"{begin_date.strftime(OUTPUT_DATE_FORMAT)} Tax: ${begin_month_tax_str}")
 print(f"{end_date.strftime(OUTPUT_DATE_FORMAT)} Tax: ${end_month_tax_str}")
