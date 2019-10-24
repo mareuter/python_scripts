@@ -14,7 +14,10 @@ if len(sys.argv) < 5:
 begin_date = datetime.strptime(sys.argv[1], INPUT_DATE_FORMAT)
 end_date = datetime.strptime(sys.argv[2], INPUT_DATE_FORMAT)
 is_separate = bool(sys.argv[3])
-tax = float(sys.argv[4])
+try:
+    tax = float(sys.argv[4])
+except ValueError:
+    tax = eval(sys.argv[4])
 
 if not is_separate:
     begin_date += ONE_DAY
