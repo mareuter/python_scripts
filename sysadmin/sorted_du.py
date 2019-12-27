@@ -34,10 +34,13 @@ def get_human_size(byte_value):
 
     human_size = "{:>3s}{}".format(dval_str, SIZE_SUFFIXES[suffix])
     return human_size
+
+
 p = subprocess.Popen(["du", "-d1"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 output = p.communicate()[0].decode('utf-8')
 values = output.split(os.linesep)
 dirs = []
+total = 0
 for value in values:
     # Skip the empty entry due to output conversion.
     if value == '':
@@ -45,9 +48,12 @@ for value in values:
     parts = value.split('\t')
     # Skip the directory total.
     if parts[1] == '.':
+        total = int(parts[0])
         continue
     dirs.append((int(parts[0]), parts[1].lstrip('.').lstrip('/')))
 sorted_dirs = sorted(dirs, key=itemgetter(0), reverse=True)
 
 for dsize, dname in sorted_dirs:
     print("{}\t{}".format(get_human_size(dsize), dname))
+
+print(f'{get_human_size(total)}\t.')
