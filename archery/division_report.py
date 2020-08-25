@@ -1,6 +1,6 @@
 import argparse
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta
 from operator import attrgetter
 import os
 import subprocess
@@ -27,7 +27,7 @@ class Archer:
 
 # Reporting orders
 DIVISION_TYPE_ORDER = ["Men's", "Women's"]
-DIVISION_BOW_ORDER = ["Recurve", "Compound"]
+DIVISION_BOW_ORDER = ["Barebow", "Longbow", "Recurve", "Compound"]
 DIVISION_CLASS_ORDER = [
     "Master",
     "Senior",
@@ -55,6 +55,8 @@ def main(opts):
 
     archers = []
     for row in sheet.iter_rows(min_row=3, values_only=True):
+        if opts.verbose:
+            print(f"Row: {row}")
         if row[FIRST_NAME] is None:
             continue
         if row[MENS_DIVISION] is not None:
@@ -64,7 +66,10 @@ def main(opts):
             divison_type = "Women's"
             division = row[WOMENS_DIVISION]
 
-        divison_bow, divison_class = division.split()
+        if "(" in division:
+            divison_bow, _, divison_class = division.split()
+        else:
+            divison_bow, divison_class = division.split()
 
         archers.append(
             Archer(
@@ -86,11 +91,29 @@ def main(opts):
     else:
         tournament_date = datetime.strptime(opts.date, DATE_INPUT_FORMAT)
 
+    if opts.ndays > 1:
+        tournament_end_date = tournament_date + timedelta(days=opts.ndays - 1)
+    else:
+        tournament_end_date = None
+
     report_lines = []
     report_lines.append("---" + os.linesep)
     report_lines.append(f"title: {tournament}" + os.linesep)
     report_lines.append("..." + os.linesep)
-    report_lines.append(f"{tournament_date.strftime(DATE_OUTPUT_FORMAT)}" + os.linesep)
+    if tournament_end_date is None:
+        formatted_date = tournament_date.strftime(DATE_OUTPUT_FORMAT)
+    if tournament_end_date.month == tournament_date.month:
+        start_parts = tournament_date.strftime(DATE_OUTPUT_FORMAT).split()
+        end_parts = tournament_end_date.strftime(DATE_OUTPUT_FORMAT).split()
+        formatted_date = f"{start_parts[0]} {start_parts[1].strip(',')}-{end_parts[1]} {start_parts[2]}"
+    if tournament_end_date.month > tournament_date.month:
+        start_parts = tournament_date.strftime(DATE_OUTPUT_FORMAT).split()
+        end_parts = tournament_end_date.strftime(DATE_OUTPUT_FORMAT).split()
+        formatted_date = (
+            f"{start_parts[0]} {start_parts[1].strip(',')}-"
+            "{end_parts[0]} {end_parts[1]} {start_parts[2]}"
+        )
+    report_lines.append(f"{formatted_date}" + os.linesep)
     report_lines.append(os.linesep)
 
     report_lines.append(f"Number of Registered Archers: {len(archers)}" + os.linesep)
@@ -150,6 +173,23 @@ if __name__ == "__main__":
         "--date",
         dest="date",
         help="The date of the tournament in YYYY/MM/DD format.",
+    )
+
+    parser.add_argument(
+        "-n",
+        "--n-days",
+        dest="ndays",
+        type=int,
+        default=1,
+        help="Number of days for the tournament.",
+    )
+
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        dest="verbose",
+        action="store_true",
+        help="Print out intermediate information.",
     )
 
     args = parser.parse_args()
