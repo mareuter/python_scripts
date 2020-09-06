@@ -1,3 +1,4 @@
+import argparse
 import asyncio
 import csv
 from datetime import datetime, timedelta
@@ -26,12 +27,8 @@ def make_point(meas_time, meas_name, meas_value, channel):
         return None
 
 
-async def main():
-    try:
-        ifilename = os.path.expanduser(os.path.expandvars(sys.argv[1]))
-    except IndexError:
-        print("Usage: ingest_data.py <path to data CSV file>")
-        sys.exit(255)
+async def main(opts):
+    ifilename = os.path.expanduser(os.path.expandvars(opts.temperature_data))
 
     time_zone = pytz.timezone('US/Arizona')
 
@@ -55,11 +52,24 @@ async def main():
                     measurement = MEASUREMENTS[j - 1]
                     point = make_point(measurement_time_utc, measurement, value, channel_number)
                     if point is not None:
-                        await client.write(point)
-                        # print(point)
+                        if opts.debug:
+                            if opts.verbose:
+                                print(point)
+                        else:
+                            await client.write(point)
                     else:
                         print(f"Bad value for channel {channel_number}: {measurement} ({measurement_time})")
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    parser = argparse.ArgumentParser(description="Insert temperature data into InfluxDB.",
+                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("temperature_data", help="Temperature data file.")
+    parser.add_argument("-d", "--debug", dest="debug", action="store_true",
+                        help="Check files for bad data (no DB write).")
+    parser.add_argument("-v", "--verbose", dest="verbose", action="store_true",
+                        help="Print out the data point.")
+
+    args = parser.parse_args()
+
+    asyncio.run(main(args))
