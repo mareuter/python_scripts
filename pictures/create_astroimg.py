@@ -13,6 +13,7 @@ except IndexError:
 os.mkdir(img_dir)
 os.chdir(img_dir)
 
-DIR_LIST = ["Calibrated", "Darks", "Flats", "Lights", "Processed", "Saved"]
+DIR_LIST = ["Aligned", "Calibrated", "Calibrated/Flats", "Calibrated/Lights", "CosCor", "Darks",
+            "Demosaiced", "Flats", "Lights", "Masters", "Processed", "Saved"]
 for pdir in DIR_LIST:
     os.mkdir(pdir)
