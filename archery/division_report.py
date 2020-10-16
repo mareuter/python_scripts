@@ -109,18 +109,26 @@ def main(opts):
         else:
             divison_bow, divison_class = division.split()
 
+        first_name = row[FIRST_NAME]
+        last_name = row[LAST_NAME]
+
         if opts.masters_age:
             dob_date = datetime.strptime(row[DATE_OF_BIRTH], AGE_DATE_FORMAT)
             age_cutoff_date = datetime(tournament_date.year, 1, 1)
             age_at_tournament = age_cutoff_date.year - dob_date.year
             age_bracket = masters_age_bracket(age_at_tournament)
             if age_bracket is not None:
+                if divison_class != "Master":
+                    print(
+                        f"Incorrect class ({divison_class} != Master) for {first_name} {last_name}"
+                    )
+                    divison_class = "Master"
                 divison_class = f"{divison_class} {age_bracket}"
 
         archers.append(
             Archer(
-                first_name=row[FIRST_NAME].title(),
-                last_name=row[LAST_NAME].title(),
+                first_name=first_name,
+                last_name=last_name,
                 divison_type=divison_type,
                 divison_bow=divison_bow,
                 divison_class=divison_class,
