@@ -29,9 +29,10 @@ def make_description():
 
 def run(opts):
     selected_files = [f for f in os.listdir(opts.selected) if os.path.isfile(os.path.join(opts.selected, f))]
-    selected_heads = ["_".join(f.split("_")[:2]) for f in selected_files if not f.startswith(".")]
+    selected_heads = ["_".join(f.split("_")[:opts.head_size])
+                      for f in selected_files if not f.startswith(".")]
 
-    raw_files = [f for f in os.listdir(opts.raw) if f.endswith("CR2")]
+    raw_files = [f for f in os.listdir(opts.raw) if not f.startswith(".")]
     new_info = None
     if opts.debug:
         print(selected_heads)
@@ -104,6 +105,7 @@ if __name__ == "__main__":
                         help="Provide a path to the selected files.")
     parser.add_argument("--version", action="version",
                         version="%(prog)s {}".format(VERSION))
+    parser.add_argument("--head-size", default=2, type=int, help="Set the head size in terms of _ splits.")
     parser.add_argument("pic_file", help="Picture file for EXIF data insertion.")
     parser.set_defaults(debug=False)
 
