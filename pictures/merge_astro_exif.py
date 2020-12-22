@@ -57,7 +57,14 @@ def run(opts):
             if opts.debug:
                 print(new_info)
         images_dates.append(im[MULTI_EXIF_TAGS[0]])
-        exposure_times.append(im[MULTI_EXIF_TAGS[1]])
+        exposure_time = im[MULTI_EXIF_TAGS[1]]
+        try:
+            "/" in exposure_time
+            exposure_time = eval(exposure_time)
+        except TypeError:
+            # Exposure time is float, do nothing
+            pass
+        exposure_times.append(exposure_time)
 
     if opts.debug:
         print(images_dates)
