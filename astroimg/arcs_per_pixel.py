@@ -37,7 +37,7 @@ if __name__ == '__main__':
     parser.add_argument("camera_model", help="The camera model.")
     parser.add_argument("focal_length", nargs=2, help="Focal length including units: 130 mm.")
     parser.add_argument("--show-size", action="store_true", help="Show the size of a pixel.")
-    parser.add_argument("--size-units", default="um", help="Set the untis for the pixel size.")
+    parser.add_argument("--size-units", default="um", help="Set the units for the pixel size.")
 
     args = parser.parse_args()
     main(args)
