@@ -4,7 +4,7 @@ import os
 import subprocess as sp
 
 OPTIONS = {
-    1: "video/Home_Videos/",
+    1: "video/",
     2: "photo/",
     3: "Picture_Backup/",
     4: "homes/mareuter/Photos/",
