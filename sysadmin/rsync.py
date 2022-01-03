@@ -7,7 +7,7 @@ OPTIONS = {
     1: "video/Home_Videos/",
     2: "photo/",
     3: "Picture_Backup/",
-    4: "homes/mareuter/photo/",
+    4: "homes/mareuter/Photos/",
 }
 
 
