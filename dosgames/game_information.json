@@ -1,0 +1,1049 @@
+[
+    {
+        "key": "HARPOON",
+        "directory": "HARPOON",
+        "executable": "HARPOON.EXE",
+        "full_name": "Harpoon",
+        "categories": [
+            "Strategy",
+            "Real-Time Strategy"
+        ]
+    },
+    {
+        "key": "HARPSE",
+        "directory": "HARPOON",
+        "executable": "SCENEDIT.EXE",
+        "full_name": "Harpoon Scenario Editor",
+        "categories": [
+            "Strategy",
+            "Real-Time Strategy",
+            "Editor"
+        ]
+    },
+    {
+        "key": "HARPOON2",
+        "directory": "HARPOON2",
+        "executable": "HARPOON2.EXE",
+        "full_name": "Harpoon 2",
+        "categories": [
+            "Strategy",
+            "Real-Time Strategy"
+        ]
+    },
+    {
+        "key": "HARP2SE",
+        "directory": "HARPOON2",
+        "executable": "SCENEDIT.EXE",
+        "full_name": "Harpoon 2 Scenario Editor",
+        "categories": [
+            "Strategy",
+            "Real-Time Strategy",
+            "Editor"
+        ]
+    },
+    {
+        "key": "XWING",
+        "directory": "XWING",
+        "executable": "XWING.EXE",
+        "full_name": "Star Wars X-Wing",
+        "categories": [
+            "Space Combat",
+            "Science Fiction"
+        ],
+        "extra_profiles": [
+            "dynamic.conf"
+        ]
+    },
+    {
+        "key": "PG",
+        "directory": "AZTECH",
+        "executable": "PG.EXE",
+        "full_name": "The Perfect General",
+        "categories": [
+            "Strategy",
+            "War Gaming"
+        ],
+        "media": [
+            "PG.ISO"
+        ],
+        "media_type": "cdrom"
+    },
+    {
+        "key": "TLA",
+        "directory": "AZTECH",
+        "executable": "TLA.EXE",
+        "full_name": "The Lost Admiral",
+        "categories": [
+            "Strategy",
+            "War Gaming"
+        ],
+        "media": [
+            "TLA.ISO"
+        ],
+        "media_type": "cdrom"
+    },
+    {
+        "key": "CCRA",
+        "directory": "WESTWOOD\\REDALERT",
+        "executable": "RA.EXE",
+        "full_name": "Command & Conquer - Red Alert",
+        "categories": [
+            "Real-Time Strategy",
+            "Fantasy War Gaming"
+        ],
+        "media": [
+            "CCRA_CD1.ISO",
+            "CCRA_CD2.ISO"
+        ],
+        "media_type": "cdrom",
+        "extra_profiles": [
+            "more_memory.conf",
+            "no_dynamic.conf"
+        ]
+    },
+    {
+        "key": "MEAN18C1",
+        "directory": "MEAN18C1",
+        "executable": "GOLF.EXE",
+        "full_name": "Mean 18 - Course Set 1",
+        "categories": [
+            "Sports Simulation"
+        ]
+    },
+    {
+        "key": "MEAN18C2",
+        "directory": "MEAN18C2",
+        "executable": "GOLF.EXE",
+        "full_name": "Mean 18 - Course Set 2",
+        "categories": [
+            "Sports Simulation"
+        ]
+    },
+    {
+        "key": "MEAN18C3",
+        "directory": "MEAN18C3",
+        "executable": "GOLF.EXE",
+        "full_name": "Mean 18 - Course Set 3",
+        "categories": [
+            "Sports Simulation"
+        ]
+    },
+    {
+        "key": "REDSTORM",
+        "directory": "REDSTORM",
+        "executable": "REDSTORM.COM",
+        "full_name": "Red Storm Rising",
+        "categories": [
+            "Real-Time Strategy",
+            "War Gaming"
+        ]
+    },
+    {
+        "key": "MAGIC",
+        "directory": "MPS\\MAGIC",
+        "executable": "MAGIC.COM",
+        "full_name": "Master of Magic",
+        "categories": [
+            "Fantasy Role Playing"
+        ],
+        "media": [
+            "MPSMAGIC_CD.ISO"
+        ],
+        "media_type": "cdrom",
+        "extra_profiles": [
+            "dynamic.conf"
+        ]
+    },
+    {
+        "key": "DOOM",
+        "directory": "SEAL",
+        "executable": "SEAL.EXE",
+        "full_name": "DOOM",
+        "categories": [
+            "First Persion Shooter",
+            "Fantasy"
+        ]
+    },
+    {
+        "key": "ZORK1",
+        "directory": "ZORK1",
+        "executable": "ZORK1.COM",
+        "full_name": "Zork I",
+        "categories": [
+            "Text Based Adventure",
+            "Fantasy"
+        ]
+    },
+    {
+        "key": "WC",
+        "directory": "WING",
+        "executable": "WC.EXE",
+        "full_name": "Wing Commander",
+        "categories": [
+            "Space Combat",
+            "Science Fiction"
+        ],
+        "extra_profiles": [
+            "wing_commander.conf"
+        ]
+    },
+    {
+        "key": "KQ1",
+        "directory": "SIERRA",
+        "executable": "KQ1.BAT",
+        "full_name": "King's Quest I: Quest for the Crown",
+        "categories": [
+            "Fantasy Adventure",
+            "Adventure Puzzles"
+        ],
+        "extra_profiles": [
+            "sierra_agi.conf"
+        ]
+    },
+    {
+        "key": "SQ",
+        "directory": "SIERRA",
+        "executable": "SQ.BAT",
+        "full_name": "Space Quest: The Sarien Encounter",
+        "categories": [
+            "Science Fiction Adventure",
+            "Adventure Puzzles"
+        ],
+        "extra_profiles": [
+            "sierra_agi.conf"
+        ]
+    },
+    {
+        "key": "SQ3",
+        "directory": "SIERRA",
+        "executable": "SQ3.BAT",
+        "full_name": "Space Quest III: The Pirates of Pestulon",
+        "categories": [
+            "Science Fiction Adventure",
+            "Adventure Puzzles"
+        ],
+        "extra_profiles": [
+            "sierra_agi.conf"
+        ]
+    },
+    {
+        "key": "PQ",
+        "directory": "SIERRA",
+        "executable": "PQ.BAT",
+        "full_name": "Police Quest",
+        "categories": [
+            "Fantasy Adventure",
+            "Adventure Puzzles"
+        ],
+        "extra_profiles": [
+            "sierra_agi.conf"
+        ]
+    },
+    {
+        "key": "GB2",
+        "directory": "GB2",
+        "executable": "GB2.BAT",
+        "full_name": "Ghost Busters II",
+        "categories": [
+            "Science Fiction"
+        ]
+    },
+    {
+        "key": "SEAWOLF",
+        "directory": "SEAWOLF",
+        "executable": "SEAWOLF.BAT",
+        "full_name": "Seawolf",
+        "categories": [
+            "Fantasy War Gaming",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "GS2000",
+        "directory": "MPS",
+        "executable": "GS2000.BAT",
+        "full_name": "Gunship 2000",
+        "categories": [
+            "Military Simulation",
+            "Flight Simulation"
+        ],
+        "extra_profiles": [
+            "microprose_flightsims.conf"
+        ]
+    },
+    {
+        "key": "SF",
+        "directory": "SF",
+        "executable": "SF.EXE",
+        "full_name": "Strike Fleet",
+        "categories": [
+            "Military Simulation",
+            "Real-Time Strategy"
+        ]
+    },
+    {
+        "key": "F117",
+        "directory": "MPS",
+        "executable": "F117.BAT",
+        "full_name": "F-117A Stealth Fighter",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ],
+        "extra_profiles": [
+            "microprose_flightsims.conf"
+        ]
+    },
+    {
+        "key": "KNIGHTS",
+        "directory": "MPS",
+        "executable": "KNIGHTS.BAT",
+        "full_name": "Knights of the Sky",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ],
+        "extra_profiles": [
+            "early_microprose_flightsims.conf"
+        ]
+    },
+    {
+        "key": "BOB1940",
+        "directory": "BOB1940",
+        "executable": "BOB.EXE",
+        "full_name": "Their Finest Hour - Battle of Britain",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "BH1942",
+        "directory": "BH1942",
+        "executable": "BH.EXE",
+        "full_name": "Battle Hawks 1942",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "CIV",
+        "directory": "MPS",
+        "executable": "CIV.BAT",
+        "full_name": "Sid Meier's Civilization",
+        "categories": [
+            "Simulation",
+            "Turn Based Strategy"
+        ]
+    },
+    {
+        "key": "PACWAR",
+        "directory": "PACWAR",
+        "executable": "PAC.EXE",
+        "full_name": "Gary Grigsby's Pacific War",
+        "categories": [
+            "Military Simulation",
+            "Turn Based Strategy"
+        ]
+    },
+    {
+        "key": "BI",
+        "directory": "BLUEBYTE\\BI",
+        "executable": "BI.EXE",
+        "full_name": "Battle Isle",
+        "categories": [
+            "Turn Based Strategy",
+            "Fantasy War Gaming"
+        ]
+    },
+    {
+        "key": "BCHESS",
+        "directory": "BTLCHESS",
+        "executable": "CHESS.EXE",
+        "full_name": "Battle Chess",
+        "categories": [
+            "Sports Gaming"
+        ]
+    },
+    {
+        "key": "SOPWITH",
+        "directory": "SOPWITH",
+        "executable": "SOPWITH.EXE",
+        "full_name": "Sopwith",
+        "categories": [
+            "Military Simulation",
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "WOLF3D",
+        "directory": "WOLF3D",
+        "executable": "WOLF3D.EXE",
+        "full_name": "Wolfenstein 3D",
+        "categories": [
+            "First Persion Shooter"
+        ]
+    },
+    {
+        "key": "WE",
+        "directory": "WE",
+        "executable": "WE.EXE",
+        "full_name": "War Eagles",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "VFLIGHT",
+        "directory": "VFLIGHT",
+        "executable": "INTRUDER.BAT",
+        "full_name": "Flight of the Inttruder",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "STARCON",
+        "directory": "STARCON",
+        "executable": "STARCON.EXE",
+        "full_name": "Star Control",
+        "categories": [
+            "Fantasy Space Combat",
+            "Arcade Shooter"
+        ]
+    },
+    {
+        "key": "KEEN2",
+        "directory": "KEEN2",
+        "executable": "KEEN2.EXE",
+        "full_name": "Commander Keen in 'Invasion of the Vorticons'",
+        "categories": [
+            "Adventure Puzzles"
+        ],
+        "extra_profiles": [
+            "386_speed.conf"
+        ]
+    },
+    {
+        "key": "KEEN4",
+        "directory": "KEEN4",
+        "executable": "KEEN4E.EXE",
+        "full_name": "Commander Keen in 'Goodbye Galaxy'",
+        "categories": [
+            "Adventure Puzzles"
+        ],
+        "extra_profiles": [
+            "386_speed.conf"
+        ]
+    },
+    {
+        "key": "HQ",
+        "directory": "HQ",
+        "executable": "HQ.BAT",
+        "full_name": "Command H.Q.",
+        "categories": [
+            "Military Simulation",
+            "Turn Based Strategy"
+        ]
+    },
+    {
+        "key": "STRIKER",
+        "directory": "STRIKER",
+        "executable": "STRIKER.EXE",
+        "full_name": "Striker",
+        "categories": [
+            "Arcade Shooter"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf",
+            "CGA.conf"
+        ]
+    },
+    {
+        "key": "QUEST",
+        "directory": "QUEST",
+        "executable": "QUEST.COM",
+        "full_name": "Cavequest",
+        "categories": [
+            "Fantasy Role Playing"
+        ]
+    },
+    {
+        "key": "MONTYS",
+        "directory": "MONTYS",
+        "executable": "MONTYS.COM",
+        "full_name": "Montezuma's Revenge",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "POP",
+        "directory": "POPULOUS",
+        "executable": "POPULOUS.EXE",
+        "full_name": "Populous",
+        "categories": [
+            "Real-Time Strategy",
+            "Fantasy"
+        ]
+    },
+    {
+        "key": "AR",
+        "directory": "AR",
+        "executable": "AR.EXE",
+        "full_name": "Airborne Ranger",
+        "categories": [
+            "Military Simulation",
+            "First Persion Shooter"
+        ]
+    },
+    {
+        "key": "AF",
+        "directory": "AIRFORCE",
+        "executable": "AIRFORCE.EXE",
+        "full_name": "Air Force Commander",
+        "categories": [
+            "Military Simulation",
+            "Real-Time Strategy"
+        ]
+    },
+    {
+        "key": "BASS",
+        "directory": "BASSTOUR",
+        "executable": "BASSTOUR.EXE",
+        "full_name": "Bass Tournament",
+        "categories": [
+            "Sports Simulation"
+        ]
+    },
+    {
+        "key": "ACF",
+        "directory": "ACFOOTB",
+        "executable": "FOOTBALL.EXE",
+        "full_name": "Arm Chair Football",
+        "categories": [
+            "Sports Simulation"
+        ]
+    },
+    {
+        "key": "DND",
+        "directory": "DND",
+        "executable": "DND.EXE",
+        "full_name": "Dungeons and Dragons",
+        "categories": [
+            "Fantasy Adventure"
+        ]
+    },
+    {
+        "key": "FALCON",
+        "directory": "FALCON",
+        "executable": "FALCON.EXE",
+        "full_name": "Falcon",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "FF",
+        "directory": "FF",
+        "executable": "MENU.EXE",
+        "full_name": "Family Feud",
+        "categories": [
+            "Game Show"
+        ]
+    },
+    {
+        "key": "GE",
+        "directory": "GE",
+        "executable": "GE.EXE",
+        "full_name": "Galactic Empire",
+        "categories": [
+            "Fantasy Space Combat"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "CRYSTAL",
+        "directory": "CRYSTAL",
+        "executable": "CC1.EXE",
+        "full_name": "Crystal Quest",
+        "categories": [
+            "Arcade Gaming"
+        ]
+    },
+    {
+        "key": "HFRO",
+        "directory": "HFRO",
+        "executable": "HFRO.COM",
+        "full_name": "The Hunt for Red October",
+        "categories": [
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "JEP",
+        "directory": "JEP",
+        "executable": "MENU.EXE",
+        "full_name": "Jeopardy",
+        "categories": [
+            "Game Show"
+        ]
+    },
+    {
+        "key": "MONOPOLY",
+        "directory": "MONOPOLY",
+        "executable": "MONOPOLY.COM",
+        "full_name": "Monopoly",
+        "categories": [
+            "Board Game"
+        ]
+    },
+    {
+        "key": "MSFLTSIM",
+        "directory": "MSFLTSIM",
+        "executable": "FS.BAT",
+        "full_name": "Microsoft Flight Simulator",
+        "categories": [
+            "Flight Simulation"
+        ]
+    },
+    {
+        "key": "PCPOOL",
+        "directory": "PCPOOL",
+        "executable": "PCPOOL.EXE",
+        "full_name": "PC Pool",
+        "categories": [
+            "Sports Gaming"
+        ]
+    },
+    {
+        "key": "SCORCHED",
+        "directory": "SCORCHED",
+        "executable": "SCORCH.EXE",
+        "full_name": "Scorched Earth",
+        "categories": [
+            "Arcade Shooter"
+        ]
+    },
+    {
+        "key": "SIMEARTH",
+        "directory": "SIMEARTH",
+        "executable": "SIMEARTH.EXE",
+        "full_name": "Simulated Earth",
+        "categories": [
+            "Science Simulation"
+        ]
+    },
+    {
+        "key": "STARGATE",
+        "directory": "STARGATE",
+        "executable": "STARGATE.COM",
+        "full_name": "Star Gate",
+        "categories": [
+            "Arcade Gaming",
+            "Space Combat"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "SWOTL",
+        "directory": "SWOTL",
+        "executable": "SW.BAT",
+        "full_name": "Secret Weapons of the Luftwaffe",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "TANKWARS",
+        "directory": "TANKWARS",
+        "executable": "BOMB.EXE",
+        "full_name": "Tank Wars",
+        "categories": [
+            "Arcade Shooter"
+        ]
+    },
+    {
+        "key": "TETRIS",
+        "directory": "TETRIS",
+        "executable": "ETETRIS.EXE",
+        "full_name": "Tetris",
+        "categories": [
+            "Arcade Gaming"
+        ]
+    },
+    {
+        "key": "THUD",
+        "directory": "THUD",
+        "executable": "THUD.EXE",
+        "full_name": "Thud Ridge",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "WHEEL",
+        "directory": "WHEEL",
+        "executable": "MENU.EXE",
+        "full_name": "Wheel of Fortune",
+        "categories": [
+            "Game Show"
+        ]
+    },
+    {
+        "key": "WGHII",
+        "directory": "WGHII",
+        "executable": "HOCKEY.BAT",
+        "full_name": "Wayne Gretzkey's Hockey II",
+        "categories": [
+            "Sports Simulation"
+        ]
+    },
+    {
+        "key": "XONIX",
+        "directory": "XONIX",
+        "executable": "XONIX.EXE",
+        "full_name": "Xonix",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "DRAKKHEN",
+        "directory": "DRAKKHEN",
+        "executable": "DRAKKHEN.COM",
+        "full_name": "Drakkhen",
+        "categories": [
+            "Fantasy Role Playing"
+        ]
+    },
+    {
+        "key": "SPACEMTH",
+        "directory": "SPACEMTH",
+        "executable": "ML.EXE",
+        "full_name": "Space Math",
+        "categories": [
+            "Education"
+        ]
+    },
+    {
+        "key": "TUNETRIV",
+        "directory": "TUNETRIV",
+        "executable": "TUNETRIV.EXE",
+        "full_name": "Tune Trivia",
+        "categories": [
+            "Game Show"
+        ]
+    },
+    {
+        "key": "SHANGHAI",
+        "directory": "SHANGHAI",
+        "executable": "SHANGPCD.EXE",
+        "full_name": "Shanghai",
+        "categories": [
+            "Strategy",
+            "Board Game"
+        ]
+    },
+    {
+        "key": "F19",
+        "directory": "MPS",
+        "executable": "F19.BAT",
+        "full_name": "F-19 Stealth Fighter",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ],
+        "media": [
+            "F19_DISKA.IMA",
+            "F19_DISKB.IMA",
+            "F19_DISKC.IMA"
+        ],
+        "media_type": "floppy",
+        "extra_profiles": [
+            "early_microprose_flightsims.conf"
+        ]
+    },
+    {
+        "key": "WR1",
+        "directory": "WR1",
+        "executable": "WR1.EXE",
+        "full_name": "Word Rescue 1",
+        "categories": [
+            "Puzzles",
+            "Education"
+        ]
+    },
+    {
+        "key": "MM",
+        "directory": "",
+        "executable": "MICKEY.EXE",
+        "full_name": "Mickey Mouse Adventure",
+        "categories": [
+            "Puzzles",
+            "Education"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ],
+        "media_only": true,
+        "media_type": "floppy",
+        "media": [
+            "MICKEY_MOUSE_DISK1.IMA",
+            "MICKEY_MOUSE_DISK2.IMA"
+        ]
+    },
+    {
+        "key": "BABY",
+        "directory": "BABY",
+        "executable": "BABY.EXE",
+        "full_name": "Bouncing Baby",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "BUGS",
+        "directory": "BUGS",
+        "executable": "BUGS.EXE",
+        "full_name": "Bugs! (A Centipede Clone)",
+        "categories": [
+            "Arcade Shooter"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "CHESS",
+        "directory": "CHESS",
+        "executable": "CHESS88.EXE",
+        "full_name": "Chess",
+        "categories": [
+            "Sports Gaming"
+        ]
+    },
+    {
+        "key": "SMILEY",
+        "directory": "SMILEY",
+        "executable": "SMILEY.EXE",
+        "full_name": "Smiley: A PacMan Clone",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "3DEMON",
+        "directory": "3DEMON",
+        "executable": "3DEMON.EXE",
+        "full_name": "3-D PacMan",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "CPOKEMAN",
+        "directory": "CPOKEMAN",
+        "executable": "CPOKEMAN.EXE",
+        "full_name": "C Poke Man (A PacMan Clone)",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "BLKJACK",
+        "directory": "BLKJACK",
+        "executable": "BLKJACK.EXE",
+        "full_name": "Black Jack",
+        "categories": [
+            "Card Game",
+            "Gambling Game"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "BRICKS",
+        "directory": "BRICKS",
+        "executable": "BRICKS.EXE",
+        "full_name": "Bricks",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "FROGGER",
+        "directory": "FROGGER",
+        "executable": "FROG.EXE",
+        "full_name": "Frogger",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "INVADER",
+        "directory": "INVADER",
+        "executable": "INVADER.COM",
+        "full_name": "Space Invaders",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "NOVATRON",
+        "directory": "NOVATRON",
+        "executable": "NOVATRON.EXE",
+        "full_name": "NovaTron",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "QUBERT",
+        "directory": "QUBERT",
+        "executable": "QUBERT.EXE",
+        "full_name": "Q-Bert",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "STARTREK",
+        "directory": "STARTREK",
+        "executable": "STARTREK.EXE",
+        "full_name": "Star Trek",
+        "categories": [
+            "Space Combat",
+            "Board Game"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "CAREUR",
+        "directory": "",
+        "executable": "CARMEN.EXE",
+        "full_name": "Where in Europe is Carmen SanDiego",
+        "categories": [
+            "Adventure Puzzles",
+            "Education"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ],
+        "media_only": true,
+        "media_type": "floppy",
+        "media": [
+            "CARMEN_EUROPE.IMA"
+        ]
+    },
+    {
+        "key": "NINJA",
+        "directory": "NINJA",
+        "executable": "NINJA.EXE",
+        "full_name": "Ninja",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "SAIL",
+        "directory": "SAILING",
+        "executable": "ING.EXE",
+        "full_name": "Sailing",
+        "categories": [
+            "Action & Adventure"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "TDR",
+        "directory": "TDR",
+        "executable": "TDR.COM",
+        "full_name": "Turbo Death Race",
+        "categories": [
+            "Racing Simulation",
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "BEAST",
+        "directory": "BEAST",
+        "executable": "BEAST.COM",
+        "full_name": "Beast",
+        "categories": [
+            "Adventure Puzzles"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "DRAGONS",
+        "directory": "DRAGONS",
+        "executable": "DRAGONS.COM",
+        "full_name": "Dragons (A Bricks Adventure)",
+        "categories": [
+            "Arcade Gaming"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    }
+]
