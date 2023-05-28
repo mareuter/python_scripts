@@ -18,7 +18,7 @@ def main(opts: argparse.Namespace) -> None:
         dump_dir = dump_dir / opts.subdir
         check_and_mkdir(top_dir / dump_dir)
 
-    raw_dump_file = "DUMP00.0.raw"
+    raw_dump_file = "Track00.0.raw"
 
     cmd = ["gw"]
     cmd.append("read")
