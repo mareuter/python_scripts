@@ -1080,5 +1080,24 @@
             "Real-Time Strategy",
             "Fantasy"
         ]
+    },
+    {
+        "key": "BA",
+        "directory": "BA",
+        "executable": "BA.EXE",
+        "full_name": "Blue Angels",
+        "categories": [
+            "Flight Simulation"
+        ]
+    },
+    {
+        "key": "JF2",
+        "directory": "JF2",
+        "executable": "JF2.EXE",
+        "full_name": "Jet Fighter II: The Adventure Continues",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
     }
 ]
