@@ -230,7 +230,7 @@
         "key": "PQ",
         "directory": "SIERRA",
         "executable": "PQ.BAT",
-        "full_name": "Police Quest",
+        "full_name": "Police Quest: In Pursuit of the Death Angel",
         "categories": [
             "Fantasy Adventure",
             "Adventure Puzzles"
@@ -399,10 +399,10 @@
         ]
     },
     {
-        "key": "VFLIGHT",
-        "directory": "VFLIGHT",
+        "key": "INTRUDER",
+        "directory": "INTRUDER",
         "executable": "INTRUDER.BAT",
-        "full_name": "Flight of the Inttruder",
+        "full_name": "Flight of the Intruder",
         "categories": [
             "Flight Simulation",
             "Military Simulation"
@@ -695,7 +695,11 @@
         "categories": [
             "Flight Simulation",
             "Military Simulation"
-        ]
+        ],
+        "media": [
+            "THUD_RIDGE_CGA.IMA"
+        ],
+        "media_type": "floppy"
     },
     {
         "key": "WHEEL",
@@ -774,9 +778,7 @@
             "Military Simulation"
         ],
         "media": [
-            "F19_DISKA.IMA",
-            "F19_DISKB.IMA",
-            "F19_DISKC.IMA"
+            "F19_DISKA.IMA"
         ],
         "media_type": "floppy",
         "extra_profiles": [
@@ -1044,6 +1046,39 @@
         ],
         "extra_profiles": [
             "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "DESTROYR",
+        "directory": "DESTROYR",
+        "executable": "DESTROYE.EXE",
+        "full_name": "Destroyer",
+        "categories": [
+            "Arcade Gaming",
+            "Military Simulation"
+        ],
+        "extra_profiles": [
+            "XT_speed.conf"
+        ]
+    },
+    {
+        "key": "YEAGER",
+        "directory": "COMBAT",
+        "executable": "YEAGER.EXE",
+        "full_name": "Chuck Yeager's Air Combat",
+        "categories": [
+            "Flight Simulation",
+            "Military Simulation"
+        ]
+    },
+    {
+        "key": "WARLORDS",
+        "directory": "WARLORDS",
+        "executable": "WARLORDS.EXE",
+        "full_name": "War Lords",
+        "categories": [
+            "Real-Time Strategy",
+            "Fantasy"
         ]
     }
 ]
