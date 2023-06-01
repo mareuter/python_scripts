@@ -1099,5 +1099,15 @@
             "Flight Simulation",
             "Military Simulation"
         ]
+    },
+    {
+        "key": "EOB2",
+        "directory": "DARKMOON",
+        "executable": "START.EXE",
+        "full_name": "Eye of the Beholder II: Darkmoon",
+        "categories": [
+            "Fantasy Role Playing",
+            "Fantasy Adventure"
+        ]
     }
 ]
