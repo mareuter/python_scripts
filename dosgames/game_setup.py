@@ -9,7 +9,8 @@ CDROM_DIR = GAMES_DIR / "cdrom"
 TEST_DIR = GAMES_DIR / "test"
 RUNNERS = {
     "dosbox-x": {
-        "config": CONFIG_DIR / "dosbox-x-0.84.1.conf"
+        "config": CONFIG_DIR / "dosbox-x.reference.conf",
+        "exec_path": "flatpak run com.dosbox_x.DOSBox-X"
     },
     "dosbox": {
         "config": CONFIG_DIR / "dosbox-0.74-3.conf"
@@ -40,31 +41,34 @@ def main(opts: argparse.Namespace) -> None:
         print(opts.media)
 
     if "*" in opts.media:
-        files = sorted([str(x) for x in media_directory.glob(opts.media)])
+        files = sorted([f":{str(x)}" for x in media_directory.glob(opts.media)])
     else:
-        files = [str(media_directory / opts.media)]
+        files = [f":{str(media_directory / opts.media)}"]
 
     media_line = []
     media_line.append(f"IMGMOUNT {media_drive}")
     media_line.extend(files)
     media_line.append(media_option)
 
-
     cmd = []
-    cmd.append(runner)
+    if type(runner) == list:
+        cmd.extend(runner)
+    else:
+        cmd.append(runner)
     cmd.append("-conf")
     cmd.append(str(RUNNERS[opts.runner]["config"]))
+    cmd.append("-set ver=6.22")
     cmd.append("-c")
-    cmd.append(f"MOUNT C {TEST_DIR}")
+    cmd.append(f'"{" ".join(media_line)}"')
     cmd.append("-c")
-    cmd.append(" ".join(media_line))
+    cmd.append(f'"MOUNT C {TEST_DIR}"')
     cmd.append("-c")
     cmd.append("A:")
 
     if opts.verbose:
-        print(cmd)
+        print(" ".join(cmd))
 
-    with sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.STDOUT, text=True) as proc:
+    with sp.Popen(" ".join(cmd), stdout=sp.PIPE, stderr=sp.STDOUT, text=True, shell=True) as proc:
         for stdout_line in iter(proc.stdout.readline, ""):
             print(stdout_line.strip())
 
