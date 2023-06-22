@@ -32,6 +32,9 @@ def main(opts: argparse.Namespace) -> None:
         media_directory = CDROM_DIR
         media_option = "-t iso"
 
+    if opts.altdir is not None:
+        media_directory = opts.altdir.expanduser()
+
     try:
         runner = RUNNERS[opts.runner]["exec_path"]
     except KeyError:
@@ -80,6 +83,7 @@ if __name__ == "__main__":
     parser.add_argument("media", help="List or glob of images.")
     parser.add_argument("-r", "--runner", default="dosbox-x", choices=["dosbox", "dosbox-x", "dosbox-staging"], help="Pick the runner.")
     parser.add_argument("-v", "--verbose", action="store_true", help="Increase script verbosity.")
+    parser.add_argument("-a", "--altdir", type=pathlib.Path, help="Provide an alternate read directory.")
 
     args = parser.parse_args()
     main(args)
