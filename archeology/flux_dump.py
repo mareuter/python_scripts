@@ -18,12 +18,14 @@ def main(opts: argparse.Namespace) -> None:
         dump_dir = dump_dir / opts.subdir
         check_and_mkdir(top_dir / dump_dir)
 
-    raw_dump_file = "Track00.0.raw"
+    raw_dump_file = "track00.0.raw"
 
     cmd = ["gw"]
     cmd.append("read")
     cmd.append(f"--drive {opts.drive}")
     cmd.append("--raw")
+    if opts.extra is not None:
+        cmd.append(opts.extra)
     cmd.append(f"{str(dump_dir / raw_dump_file)}")
 
     cmd_str = " ".join(cmd)
@@ -49,6 +51,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--subdir", type=pathlib.Path, help="Sub directory for multiple disks."
     )
+    parser.add_argument("-e", "--extra", help="Extra CLI flags.")
     parser.add_argument(
         "-v", "--verbose", action="store_true", help="Add verbosity to program."
     )
