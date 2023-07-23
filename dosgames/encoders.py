@@ -12,6 +12,7 @@ class GameInformation:
     media_type: str
     media_only: bool
     extra_profiles: list
+    is_working: bool
 
     def listing(self) -> str:
         return f"{self.key}: {self.full_name}"
@@ -28,4 +29,5 @@ def decode_game_information(dct):
         dct.get("media_type", None),
         dct.get("media_only", False),
         dct.get("extra_profiles", None),
+        dct.get("is_working", True)
     )

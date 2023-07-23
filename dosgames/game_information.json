@@ -191,7 +191,7 @@
         "key": "KQ1",
         "directory": "SIERRA",
         "executable": "KQ1.BAT",
-        "full_name": "King's Quest I: Quest for the Crown",
+        "full_name": "King's Quest I - Quest for the Crown",
         "categories": [
             "Fantasy Adventure",
             "Adventure Puzzles"
@@ -204,7 +204,7 @@
         "key": "SQ",
         "directory": "SIERRA",
         "executable": "SQ.BAT",
-        "full_name": "Space Quest: The Sarien Encounter",
+        "full_name": "Space Quest - The Sarien Encounter",
         "categories": [
             "Science Fiction Adventure",
             "Adventure Puzzles"
@@ -217,7 +217,7 @@
         "key": "SQ3",
         "directory": "SIERRA",
         "executable": "SQ3.BAT",
-        "full_name": "Space Quest III: The Pirates of Pestulon",
+        "full_name": "Space Quest III - The Pirates of Pestulon",
         "categories": [
             "Science Fiction Adventure",
             "Adventure Puzzles"
@@ -230,7 +230,7 @@
         "key": "PQ",
         "directory": "SIERRA",
         "executable": "PQ.BAT",
-        "full_name": "Police Quest: In Pursuit of the Death Angel",
+        "full_name": "Police Quest - In Pursuit of the Death Angel",
         "categories": [
             "Fantasy Adventure",
             "Adventure Puzzles"
@@ -422,7 +422,7 @@
         "key": "KEEN2",
         "directory": "KEEN2",
         "executable": "KEEN2.EXE",
-        "full_name": "Commander Keen in 'Invasion of the Vorticons'",
+        "full_name": "Commander Keen in Invasion of the Vorticons",
         "categories": [
             "Adventure Puzzles"
         ],
@@ -434,7 +434,7 @@
         "key": "KEEN4",
         "directory": "KEEN4",
         "executable": "KEEN4E.EXE",
-        "full_name": "Commander Keen in 'Goodbye Galaxy'",
+        "full_name": "Commander Keen in Goodbye Galaxy",
         "categories": [
             "Adventure Puzzles"
         ],
@@ -1094,7 +1094,7 @@
         "key": "JF2",
         "directory": "JF2",
         "executable": "JF2.EXE",
-        "full_name": "Jet Fighter II: The Adventure Continues",
+        "full_name": "Jet Fighter II - The Adventure Continues",
         "categories": [
             "Flight Simulation",
             "Military Simulation"
@@ -1104,10 +1104,20 @@
         "key": "EOB2",
         "directory": "DARKMOON",
         "executable": "START.EXE",
-        "full_name": "Eye of the Beholder II: Darkmoon",
+        "full_name": "Eye of the Beholder II - Darkmoon",
         "categories": [
             "Fantasy Role Playing",
             "Fantasy Adventure"
+        ]
+    },
+    {
+        "key": "A10",
+        "directory": "DYNAMIX\\A10",
+        "executable": "A.EXE",
+        "full_name": "A-10 Tank Killer",
+        "categories": [
+            "Military Simulation",
+            "Flight Simulation"
         ]
     }
 ]
