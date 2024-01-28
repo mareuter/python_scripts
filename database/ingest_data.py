@@ -113,7 +113,7 @@ if __name__ == "__main__":
         "--auth",
         type=pathlib.Path,
         default=pathlib.Path("~/.auth/influxdb"),
-        help="Provide the path to the ",
+        help="Provide the path to the authentication file.",
     )
 
     args = parser.parse_args()
