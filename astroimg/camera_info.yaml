@@ -5,3 +5,4 @@
   pixel_height: 3456
   sensor_width: 22.3 mm
   sensor_height: 14.9 mm
+  bits_per_pixel: 14
