@@ -1,0 +1,19 @@
+# archery
+openpyxl
+pandoc
+weasyprint
+# astroimg
+astropy
+ruamel.yaml
+# dosgames
+prettytable
+# pictures
+pyexifinfo
+# running
+apiclient
+httplib2
+oauth2client
+pandas
+# weather
+aioinflux
+pytz
