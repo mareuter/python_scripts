@@ -16,4 +16,3 @@ oauth2client
 pandas
 # weather
 aioinflux
-pytz

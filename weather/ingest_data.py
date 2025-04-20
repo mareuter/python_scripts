@@ -1,14 +1,14 @@
 import argparse
 import asyncio
 import csv
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import os
 import pathlib
 import re
 from typing import NamedTuple
+from zoneinfo import ZoneInfo
 
 from aioinflux import InfluxDBClient, lineprotocol, TIMESTR, MEASUREMENT, TAG, FLOAT
-import pytz
 
 CHANNEL_MATCH = re.compile(r"\d")
 INPUT_DATE_FORMAT = "%Y/%m/%d %H:%M"
@@ -47,7 +47,7 @@ def make_point(meas_time, meas_name, meas_value, channel):
 async def main(opts):
     ifilename = os.path.expanduser(os.path.expandvars(opts.temperature_data))
 
-    time_zone = pytz.timezone("US/Arizona")
+    time_zone = ZoneInfo("US/Arizona")
 
     channel_number = int(CHANNEL_MATCH.findall(os.path.basename(ifilename))[-1])
     # print(channel_number)
@@ -68,8 +68,8 @@ async def main(opts):
                     continue
                 measurement_time = datetime.strptime(row[0], INPUT_DATE_FORMAT)
                 measurement_time += timedelta(seconds=channel_number)
-                measurement_time = time_zone.localize(measurement_time)
-                measurement_time_utc = measurement_time.astimezone(pytz.utc)
+                measurement_time = measurement_time.astimezone(time_zone)
+                measurement_time_utc = measurement_time.astimezone(timezone.utc)
                 for j in range(1, 5):
                     value = row[j]
                     measurement = MEASUREMENTS[j - 1]
