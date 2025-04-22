@@ -8,7 +8,7 @@ ruamel.yaml
 # dosgames
 prettytable
 # pictures
-pyexifinfo
+pillow
 # running
 apiclient
 httplib2

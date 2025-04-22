@@ -3,13 +3,14 @@
 import argparse
 import csv
 import os
-import pyexifinfo
 import subprocess
 
+from PIL import ExifTags, Image
+
 CSV_FILE = "temp.csv"
-SINGLE_EXIF_TAGS = ['EXIF:ApertureValue', 'EXIF:FNumber', 'EXIF:Flash', 'EXIF:FocalLength',
-                    'EXIF:ISO', 'EXIF:Make', 'EXIF:Model', 'EXIF:ShutterSpeedValue']
-MULTI_EXIF_TAGS = ['EXIF:DateTimeOriginal', 'EXIF:ExposureTime']
+SINGLE_EXIF_TAGS = [ExifTags.Base.ApertureValue, ExifTags.Base.FNumber, ExifTags.Base.Flash, ExifTags.Base.FocalLength,
+                    ExifTags.Base.ISO, ExifTags.Base.Make, ExifTags.Base.Model, ExifTags.Base.ShutterSpeedValue]
+MULTI_EXIF_TAGS = [ExifTags.Base.DateTimeOriginal, ExifTags.Base.ExposureTime]
 FILE_EXTS = ["jpg", "tif", "tiff"]
 VERSION = "1.0.0"
 
@@ -50,7 +51,9 @@ def run(opts):
         if not is_raw_selected:
             continue
         print(raw_file)
-        im = pyexifinfo.information(os.path.join(opts.raw, raw_file))
+        image = Image.open(os.path.join(opts.raw, raw_file))
+        im = image.getexif().get_ifd(34665)
+        image.close()
         # Take information that doesn't change per image from the first available.
         if new_info is None:
             new_info = {k: v for k, v in im.items() if k in SINGLE_EXIF_TAGS}

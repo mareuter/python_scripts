@@ -3,13 +3,14 @@
 import argparse
 import csv
 import os
-import pyexifinfo
 import subprocess
 
+from PIL import ExifTags, Image
+
 CSV_FILE = "temp.csv"
-EXIF_TAGS = ['EXIF:ApertureValue', 'EXIF:DateTimeOriginal', 'EXIF:ExposureTime', 'EXIF:FNumber',
-             'EXIF:Flash', 'EXIF:FocalLength', 'EXIF:ISO', 'EXIF:Make', 'EXIF:Model',
-             'EXIF:ShutterSpeedValue']
+EXIF_TAGS = [ExifTags.Base.ApertureValue, ExifTags.Base.DateTimeOriginal, ExifTags.Base.ExposureTime, ExifTags.Base.FNumber,
+             ExifTags.Base.Flash, ExifTags.Base.FocalLength, ExifTags.Base.ISO, ExifTags.Base.Make, ExifTags.Base.Model,
+             ExifTags.Base.ShutterSpeedValue]
 FILE_EXTS = ["jpg", "tif", "tiff"]
 VERSION = "1.0.0"
 
@@ -33,7 +34,9 @@ def run(opts):
     raw_files = [f for f in os.listdir(raw_dir) if f.endswith("CR2")]
 
     for raw_file in raw_files:
-        im = pyexifinfo.information(os.path.join(raw_dir, raw_file))
+        image = Image.open(os.path.join(opts.raw, raw_file))
+        im = image.getexif().get_ifd(34665)
+        image.close()
         new_tags = [k for k in im if k in EXIF_TAGS]
         new_info = [v for k, v in im.items() if k in EXIF_TAGS]
 

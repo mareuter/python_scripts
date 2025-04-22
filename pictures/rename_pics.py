@@ -3,18 +3,17 @@
 ###############################################################################
 #
 # Author: Michael Reuter
-# Date: December 1, 2017
+# Date: April 20, 2025
 #
 # Script to rename picture files by reading the EXIF tags.
-#
-# Uses pyexifinfo.
 #
 ###############################################################################
 
 import argparse
 from datetime import datetime
 import os
-import pyexifinfo
+
+from PIL import ExifTags, Image
 
 VERSION = "1.0.0"
 
@@ -31,8 +30,10 @@ def make_description():
 
 
 def rename_pic(ifilename, opt, label="I"):
-    im = pyexifinfo.information(ifilename)
-    pic_time = im["EXIF:DateTimeOriginal"]
+    image = Image.open(ifilename)
+    im = image.getexif().get_ifd(34665)
+    image.close()
+    pic_time = im[ExifTags.Base.DateTimeOriginal]
     dt = datetime.strptime(pic_time, "%Y:%m:%d %H:%M:%S")
     if label == "I":
         if opt.full:
