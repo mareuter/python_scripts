@@ -12,7 +12,7 @@ EXIF_TAGS = [ExifTags.Base.ApertureValue, ExifTags.Base.DateTimeOriginal, ExifTa
              ExifTags.Base.Flash, ExifTags.Base.FocalLength, ExifTags.Base.ISO, ExifTags.Base.Make, ExifTags.Base.Model,
              ExifTags.Base.ShutterSpeedValue]
 FILE_EXTS = ["jpg", "tif", "tiff"]
-VERSION = "1.0.0"
+VERSION = "2.0.0"
 
 
 def make_description():

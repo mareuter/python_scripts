@@ -15,7 +15,7 @@ import os
 
 from PIL import ExifTags, Image
 
-VERSION = "1.0.0"
+VERSION = "2.0.0"
 
 
 def make_description():
