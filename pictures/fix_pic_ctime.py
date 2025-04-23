@@ -3,9 +3,10 @@
 import argparse
 from datetime import datetime
 import os
-import pyexifinfo
 
-VERSION = "1.0.0"
+from PIL import ExifTags, Image
+
+VERSION = "2.0.0"
 
 
 def make_description():
@@ -31,8 +32,10 @@ def run(opts):
                 print(pfile)
 
             try:
-                im = pyexifinfo.information(pfile)
-                pic_time = im["EXIF:DateTimeOriginal"]
+                image = Image.open(pfile)
+                im = image.getexif().get_ifd(34665)
+                image.close()
+                pic_time = im[ExifTags.Base.DateTimeOriginal]
                 dt = datetime.strptime(pic_time, "%Y:%m:%d %H:%M:%S")
 
                 stinfo = os.stat(pfile)
