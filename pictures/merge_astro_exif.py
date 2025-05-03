@@ -8,8 +8,10 @@ import subprocess
 from PIL import ExifTags, Image
 
 CSV_FILE = "temp.csv"
-SINGLE_EXIF_TAGS = [ExifTags.Base.ApertureValue, ExifTags.Base.FNumber, ExifTags.Base.Flash, ExifTags.Base.FocalLength,
-                    ExifTags.Base.ISO, ExifTags.Base.Make, ExifTags.Base.Model, ExifTags.Base.ShutterSpeedValue]
+SINGLE_EXIF_TAGS = [ExifTags.Base.ApertureValue, ExifTags.Base.FNumber, ExifTags.Base.Flash,
+                    ExifTags.Base.FocalLength,
+                    ExifTags.Base.ISO, ExifTags.Base.Make, ExifTags.Base.Model,
+                    ExifTags.Base.ShutterSpeedValue]
 MULTI_EXIF_TAGS = [ExifTags.Base.DateTimeOriginal, ExifTags.Base.ExposureTime]
 FILE_EXTS = ["jpg", "tif", "tiff"]
 VERSION = "2.0.0"
@@ -62,7 +64,7 @@ def run(opts):
         images_dates.append(im[MULTI_EXIF_TAGS[0]])
         exposure_time = im[MULTI_EXIF_TAGS[1]]
         try:
-            "/" in exposure_time
+            "/" in exposure_time  # noqa
             exposure_time = eval(exposure_time)
         except TypeError:
             # Exposure time is float, do nothing
@@ -80,11 +82,11 @@ def run(opts):
 
     pic_file_head = opts.pic_file.split('.')[0]
     for extension in FILE_EXTS:
-        ifile = "{}.{}".format(pic_file_head, extension)
+        ifile = f"{pic_file_head}.{extension}"
         if os.path.exists(ifile):
             write_csv(list(new_info.keys()), list(new_info.values()), ifile)
             print(ifile)
-            cmd = ["exiftool", "-csv={}".format(CSV_FILE), "-overwrite_original", ifile]
+            cmd = ["exiftool", f"-csv={CSV_FILE}", "-overwrite_original", ifile]
             if opts.debug:
                 print(cmd)
             output = subprocess.check_output(cmd)
@@ -114,7 +116,7 @@ if __name__ == "__main__":
     parser.add_argument("-s", "--selected", dest="selected", required=True,
                         help="Provide a path to the selected files.")
     parser.add_argument("--version", action="version",
-                        version="%(prog)s {}".format(VERSION))
+                        version=f"%(prog)s {VERSION}")
     parser.add_argument("--head-size", default=2, type=int, help="Set the head size in terms of _ splits.")
     parser.add_argument("pic_file", help="Picture file for EXIF data insertion.")
     parser.set_defaults(debug=False)

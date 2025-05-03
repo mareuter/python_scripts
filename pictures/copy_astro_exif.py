@@ -8,9 +8,9 @@ import subprocess
 from PIL import ExifTags, Image
 
 CSV_FILE = "temp.csv"
-EXIF_TAGS = [ExifTags.Base.ApertureValue, ExifTags.Base.DateTimeOriginal, ExifTags.Base.ExposureTime, ExifTags.Base.FNumber,
-             ExifTags.Base.Flash, ExifTags.Base.FocalLength, ExifTags.Base.ISO, ExifTags.Base.Make, ExifTags.Base.Model,
-             ExifTags.Base.ShutterSpeedValue]
+EXIF_TAGS = [ExifTags.Base.ApertureValue, ExifTags.Base.DateTimeOriginal, ExifTags.Base.ExposureTime,
+             ExifTags.Base.FNumber, ExifTags.Base.Flash, ExifTags.Base.FocalLength, ExifTags.Base.ISO,
+             ExifTags.Base.Make, ExifTags.Base.Model, ExifTags.Base.ShutterSpeedValue]
 FILE_EXTS = ["jpg", "tif", "tiff"]
 VERSION = "2.0.0"
 
@@ -27,10 +27,7 @@ def make_description():
 
 
 def run(opts):
-    if opts.raw is not None:
-        raw_dir = opts.raw
-    else:
-        raw_dir = "."
+    raw_dir = opts.raw if opts.raw is not None else "."
     raw_files = [f for f in os.listdir(raw_dir) if f.endswith("CR2")]
 
     for raw_file in raw_files:
@@ -46,11 +43,11 @@ def run(opts):
 
         file_head = raw_file.split('.')[0]
         for extension in FILE_EXTS:
-            ifile = "{}.{}".format(file_head, extension)
+            ifile = f"{file_head}.{extension}"
             if os.path.exists(ifile):
                 write_csv(new_tags, new_info, ifile)
                 print(ifile)
-                cmd = ["exiftool", "-csv={}".format(CSV_FILE), "-overwrite_original", ifile]
+                cmd = ["exiftool", f"-csv={CSV_FILE}", "-overwrite_original", ifile]
                 if opts.debug:
                     print(cmd)
                 output = subprocess.check_output(cmd)
@@ -78,7 +75,7 @@ if __name__ == "__main__":
     parser.add_argument("-r", "--raw", dest="raw",
                         help="Provide a separate path to RAW files.")
     parser.add_argument("--version", action="version",
-                        version="%(prog)s {}".format(VERSION))
+                        version=f"%(prog)s {VERSION}")
     parser.set_defaults(debug=False)
 
     args = parser.parse_args()

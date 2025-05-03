@@ -2,7 +2,6 @@
 import pathlib
 import sys
 
-
 EXECUTABLES = ["BAT", "COM", "EXE"]
 
 

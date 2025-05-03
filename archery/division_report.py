@@ -5,7 +5,6 @@ from operator import attrgetter
 import os
 import re
 import subprocess
-import sys
 
 from openpyxl import load_workbook
 
@@ -64,10 +63,7 @@ def main(opts):
     except IndexError:
         print("Usage: division_report.py <Input Spreadsheet>")
 
-    if opts.date is None:
-        tournament_date = datetime.now()
-    else:
-        tournament_date = datetime.strptime(opts.date, DATE_INPUT_FORMAT)
+    tournament_date = datetime.now() if opts.date is None else datetime.strptime(opts.date, DATE_INPUT_FORMAT)
 
     workbook = load_workbook(ifile)
     sheet = workbook.active
@@ -135,15 +131,9 @@ def main(opts):
             )
         )
 
-    if opts.tournament is None:
-        tournament = "Tournament"
-    else:
-        tournament = opts.tournament
+    tournament = "Tournament" if opts.tournament is None else opts.tournament
 
-    if opts.ndays > 1:
-        tournament_end_date = tournament_date + timedelta(days=opts.ndays - 1)
-    else:
-        tournament_end_date = None
+    tournament_end_date = tournament_date + timedelta(days=opts.ndays - 1) if opts.ndays > 1 else None
 
     report_lines = []
     report_lines.append("---" + os.linesep)

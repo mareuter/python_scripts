@@ -7,31 +7,28 @@ import subprocess
 
 
 def combine_files(opts):
-    """Combine the odd and even pages intoa  single file.
-    """
+    """Combine the odd and even pages into a single file."""
     cmd = ['pdftk']
-    cmd.append('A={}'.format(opts.odd_pages))
-    cmd.append('B={}'.format(opts.even_pages))
+    cmd.append(f'A={opts.odd_pages}')
+    cmd.append(f'B={opts.even_pages}')
     cmd.append('shuffle')
     cmd.append('A{}'.format('end-1' if opts.reverse_odd else ''))
     cmd.append('B{}'.format('end-1' if opts.reverse_even else ''))
     cmd.append('output')
-    cmd.append('{}'.format(opts.combined_file))
+    cmd.append(f'{opts.combined_file}')
 
     with subprocess.Popen(cmd, stdout=subprocess.PIPE) as proc:
         print(str(proc.stdout.read()))
 
 
 def delete_files(opts):
-    """Delete the input files.
-    """
+    """Delete the input files."""
     os.unlink(opts.odd_pages)
     os.unlink(opts.even_pages)
 
 
 def get_description():
-    """Make the program description.
-    """
+    """Make the program description."""
     descr = ['Combine odd and even pages from separately scanned documents']
     return os.linesep.join(descr)
 

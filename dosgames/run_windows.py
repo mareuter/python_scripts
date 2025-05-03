@@ -14,7 +14,7 @@ MEDIA_OPTIONS = {
 
 
 def main(opts: argparse.Namespace) -> None:
-    
+
     media_config = []
     media_conf_file = None
     if opts.media is not None:
@@ -48,7 +48,7 @@ def main(opts: argparse.Namespace) -> None:
         for line in proc.stdout.decode().split(os.linesep):
             print(line)
 
-    if media_conf_file is not None:    
+    if media_conf_file is not None:
         media_conf_file.unlink()
 
 

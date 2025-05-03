@@ -17,13 +17,9 @@ def main(opts):
     for i, basic_game in enumerate(basic_games.iterdir()):
         game_listing[i + 1] = basic_game.name
     for index, game in game_listing.items():
-        if index < 10:
-            spacing = "  "
-        else:
-            spacing = " "
+        spacing = "  " if index < 10 else " "
         print(f"{index}:{spacing}{game}")
     game_index = int(input("Pick index of game to play: "))
-    bas_game = game_listing[game_index]
 
     cmd = []
     cmd.append(DEFAULT_RUNNER)
@@ -38,7 +34,7 @@ def main(opts):
     cmd.append("-c")
     cmd.append("CD BASGAMES")
     cmd.append("-c")
-    cmd.append(f"C:\PROGRAMS\BASICA.EXE {game_listing[game_index]}")
+    cmd.append(rf"C:\PROGRAMS\BASICA.EXE {game_listing[game_index]}")
     if opts.exit:
         cmd.append("-c")
         cmd.append("EXIT")

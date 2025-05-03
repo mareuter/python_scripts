@@ -28,26 +28,20 @@ def main(opts):
     games = None
     with open(GAME_INFORMATION) as ifile:
         games = json.load(ifile, object_hook=encoders.decode_game_information)
-   
+
     try:
         game = [x for x in games if x.key == opts.game_key][0]
     except IndexError:
-        raise RuntimeError(f"{opts.game_key} cannot be found!")
+        raise RuntimeError(f"{opts.game_key} cannot be found!") from None
 
     try:
         exec_path = RUNNERS[opts.runner]['exec_path']
-        if " " in exec_path:
-            runner = exec_path.split()
-        else:
-            runner = exec_path
+        runner = exec_path.split() if " " in exec_path else exec_path
     except KeyError:
         runner = opts.runner
 
     cmd = []
-    if isinstance(runner, list):
-        cmd.extend(runner)
-    else:
-        cmd.append(runner)
+    cmd.extend(runner) if isinstance(runner, list) else cmd.append(runner)
     cmd.append("-conf")
     cmd.append(str(CONFIG_DIR / f"{game.key.lower()}.conf"))
 
@@ -64,7 +58,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument("game_key")
-    parser.add_argument("-r", "--runner", default="dosbox-x", choices=["dosbox", "dosbox-x", "dosbox-staging"], help="Pick the runner.")
+    parser.add_argument("-r", "--runner", default="dosbox-x",
+                        choices=["dosbox", "dosbox-x", "dosbox-staging"], help="Pick the runner.")
     parser.add_argument("--debug", dest="debug", action="store_true")
 
     args = parser.parse_args()

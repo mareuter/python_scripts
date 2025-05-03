@@ -23,11 +23,11 @@ def main(opts):
     games = None
     with open(GAME_INFORMATION) as ifile:
         games = json.load(ifile, object_hook=encoders.decode_game_information)
-   
+
     try:
         game = [x for x in games if x.key == opts.game_key][0]
     except IndexError:
-        raise RuntimeError(f"{opts.game_key} cannot be found!")
+        raise RuntimeError(f"{opts.game_key} cannot be found!") from None
 
     use_media = game.media is not None
     if use_media:
@@ -49,7 +49,7 @@ def main(opts):
         cmd.append(f"{media_drive}:")
     else:
         cmd.append("C:")
-        cmd.append(f"CD C:\{game.directory}")
+        cmd.append(rf"CD C:\{game.directory}")
     cmd.append(game.executable)
     cmd.append("EXIT")
 
