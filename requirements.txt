@@ -16,3 +16,5 @@ oauth2client
 pandas
 # weather
 aioinflux
+# dev
+pre-commit
