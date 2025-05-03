@@ -1,0 +1,17 @@
+[tool.numpydoc_validation]
+checks = [
+    "all",   # report on all checks, except the below
+    "EX01",
+    "SA01",
+    "ES01",
+    "GL01",
+    "SS05",
+    "GL08",  # Remove later when all scripts have docstrings
+    "PR01"   # Remove later when all scripts have docstrings
+]
+exclude = [
+    "test_*",
+    "__init__",
+    "conf",
+    "startup"
+]

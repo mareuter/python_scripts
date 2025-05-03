@@ -23,5 +23,8 @@ ignore = [
 [lint.isort]
 force-sort-within-sections = true
 
+[lint.pycodestyle]
+max-doc-length = 79
+
 [lint.pydocstyle]
 convention = "numpy"

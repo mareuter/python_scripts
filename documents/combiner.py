@@ -6,8 +6,14 @@ import os
 import subprocess
 
 
-def combine_files(opts):
-    """Combine the odd and even pages into a single file."""
+def combine_files(opts: argparse.Namespace):
+    """Combine the odd and even pages into a single file.
+
+    Parameters
+    ----------
+    opts : argparse.Namespace
+        Command-line options from script.
+    """
     cmd = ['pdftk']
     cmd.append(f'A={opts.odd_pages}')
     cmd.append(f'B={opts.even_pages}')
@@ -21,14 +27,26 @@ def combine_files(opts):
         print(str(proc.stdout.read()))
 
 
-def delete_files(opts):
-    """Delete the input files."""
+def delete_files(opts: argparse.Namespace):
+    """Delete the input files.
+
+    Parameters
+    ----------
+    opts : argparse.Namespace
+        Command-line options from script.
+    """
     os.unlink(opts.odd_pages)
     os.unlink(opts.even_pages)
 
 
 def get_description():
-    """Make the program description."""
+    """Make the program description.
+
+    Returns
+    -------
+    str
+        The program description.
+    """
     descr = ['Combine odd and even pages from separately scanned documents']
     return os.linesep.join(descr)
 

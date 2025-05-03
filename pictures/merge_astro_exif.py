@@ -56,7 +56,8 @@ def run(opts):
         image = Image.open(os.path.join(opts.raw, raw_file))
         im = image.getexif().get_ifd(34665)
         image.close()
-        # Take information that doesn't change per image from the first available.
+        # Take information that doesn't change per image from the first
+        # available.
         if new_info is None:
             new_info = {k: v for k, v in im.items() if k in SINGLE_EXIF_TAGS}
             if opts.debug:

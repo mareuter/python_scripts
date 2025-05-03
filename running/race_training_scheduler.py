@@ -33,7 +33,6 @@ def create_training_event(tday, tsummary):
     -------
     dict
         The event information in dictionary form.
-
     """
     tday_str = tday.date().isoformat()
     event = {
@@ -62,7 +61,6 @@ def find_start_day(rday, tschedule):
     -------
     datetime
         The object containing the training start day.
-
     """
     race_day = datetime.strptime(rday, "%Y/%m/%d")
     day_offset = 6 - race_day.weekday()
@@ -86,7 +84,6 @@ def get_calendar_id(api, calendar_name):
     -------
     str
         The Id of the requested calendar.
-
     """
     calendar_list = api.calendarList().list().execute()
     for calendar_list_entry in calendar_list['items']:
@@ -110,7 +107,6 @@ def get_credentials(flags):
     -------
     Credentials
         The obtained credential.
-
     """
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
@@ -140,7 +136,6 @@ def fix_path(ifilename):
     -------
     str
         The current path with the special markers expanded to path elements.
-
     """
     return os.path.expanduser(os.path.expandvars(ifilename))
 
@@ -152,7 +147,6 @@ def make_description():
     -------
     str
         The program description paragraph.
-
     """
     result = []
     result.append("This script takes a race date (YYYY/MM/DD) and a training schedule and places it in ")
@@ -162,14 +156,13 @@ def make_description():
     return " ".join(result)
 
 
-def run(opts):
+def run(opts: argparse.Namespace):
     """Run the main program elements.
 
     Parameters
     ----------
-    opts : namespace
+    opts : argparse.Namespace
         The object containing the options from the command-line.
-
     """
     training_schedule = pandas.read_csv(fix_path(opts.training_schedule), index_col=0)
     training_day = find_start_day(opts.race_day, training_schedule)
@@ -203,7 +196,8 @@ def run(opts):
 
 if __name__ == '__main__':
     default_format = argparse.ArgumentDefaultsHelpFormatter
-    # The parents keyword needs to be used in order to add command-line arguments from the OAuth2 package.
+    # The parents keyword needs to be used in order to add command-line
+    # arguments from the OAuth2 package.
     parser = argparse.ArgumentParser(description=make_description(), formatter_class=default_format,
                                      parents=[tools.argparser])
 

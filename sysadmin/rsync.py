@@ -25,7 +25,6 @@ def run_cmd(command, as_lines=False):
     -------
     str or list
         The output from the command.
-
     """
     output = sp.run(command, stdout=sp.PIPE, stderr=sp.STDOUT)
     decoded_output = output.stdout.decode("utf-8")
