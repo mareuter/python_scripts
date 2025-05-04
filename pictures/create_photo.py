@@ -32,4 +32,4 @@ os.mkdir(year)
 os.chdir(year)
 
 for i in range(12):
-    os.mkdir("{:02d}".format(i + 1))
+    os.mkdir(f"{i + 1:02d}")

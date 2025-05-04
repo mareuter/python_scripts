@@ -1,14 +1,14 @@
 import argparse
 import asyncio
 import csv
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 import os
 import pathlib
 import re
 from typing import NamedTuple
 from zoneinfo import ZoneInfo
 
-from aioinflux import InfluxDBClient, lineprotocol, TIMESTR, MEASUREMENT, TAG, FLOAT
+from aioinflux import FLOAT, MEASUREMENT, TAG, TIMESTR, InfluxDBClient, lineprotocol
 
 CHANNEL_MATCH = re.compile(r"\d")
 INPUT_DATE_FORMAT = "%Y/%m/%d %H:%M"
@@ -69,7 +69,7 @@ async def main(opts):
                 measurement_time = datetime.strptime(row[0], INPUT_DATE_FORMAT)
                 measurement_time += timedelta(seconds=channel_number)
                 measurement_time = measurement_time.astimezone(time_zone)
-                measurement_time_utc = measurement_time.astimezone(timezone.utc)
+                measurement_time_utc = measurement_time.astimezone(UTC)
                 for j in range(1, 5):
                     value = row[j]
                     measurement = MEASUREMENTS[j - 1]

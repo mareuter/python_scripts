@@ -13,12 +13,14 @@ OPTIONS = {
 
 def run_cmd(command, as_lines=False):
     """Run a command via subprocess::run.
+
     Parameters
     ----------
     command : `list`
         The command to run.
     as_lines : `bool`, optional
         Return the output as a list instead of a string.
+
     Returns
     -------
     str or list

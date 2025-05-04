@@ -52,7 +52,7 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--debug", dest="debug", action="store_true",
                         help="Debug the program.")
     parser.add_argument("--version", action="version",
-                        version="%(prog)s {}".format(VERSION))
+                        version=f"%(prog)s {VERSION}")
     parser.set_defaults(debug=False, full=False)
 
     args = parser.parse_args()

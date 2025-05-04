@@ -1,0 +1,49 @@
+[tool.ruff]
+line-length = 110
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "B",
+    "D",
+    "E",
+    "F",
+    "I",
+    "SIM",
+    "UP",
+    "W"
+]
+ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104"
+]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 79
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.numpydoc_validation]
+checks = [
+    "all",   # report on all checks, except the below
+    "EX01",
+    "SA01",
+    "ES01",
+    "GL01",
+    "SS05",
+    "GL08",  # Remove later when all scripts have docstrings
+    "PR01"   # Remove later when all scripts have docstrings
+]
+exclude = [
+    "test_*",
+    "__init__",
+    "conf",
+    "startup"
+]

@@ -5,7 +5,6 @@ import shutil
 
 import constants
 
-
 SPLIT_CHAR = b"\r\n"
 EMPTY_LINE = b""
 BAD_DATA_BYTE = b"\x00"

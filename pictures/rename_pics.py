@@ -36,19 +36,13 @@ def rename_pic(ifilename, opt, label="I"):
     pic_time = im[ExifTags.Base.DateTimeOriginal]
     dt = datetime.strptime(pic_time, "%Y:%m:%d %H:%M:%S")
     if label == "I":
-        if opt.full:
-            tag = "{}{:02d}{:02d}".format(dt.year, dt.month, dt.day)
-        else:
-            tag = "{:X}{:02d}".format(dt.month, dt.day)
+        tag = f"{dt.year}{dt.month:02d}{dt.day:02d}" if opt.full else f"{dt.month:X}{dt.day:02d}"
         ofilename = "{}{}{}".format(label, tag.upper(), ifilename.split('_')[-1])
     else:
         if opt.full:
-            tag = "{}{:02d}{:02d}{:02d}{:02d}{:02d}".format(dt.year, dt.month,
-                                                            dt.day, dt.hour,
-                                                            dt.minute, dt.second)
+            tag = f"{dt.year}{dt.month:02d}{dt.day:02d}{dt.hour:02d}{dt.minute:02d}{dt.second:02d}"
         else:
-            tag = "{:X}{:02d}{:02d}{:02d}{:02d}".format(dt.month, dt.day, dt.hour,
-                                                        dt.minute, dt.second)
+            tag = f"{dt.month:X}{dt.day:02d}{dt.hour:02d}{dt.minute:02d}{dt.second:02d}"
         ofilename = "{}{}.{}".format(label, tag.upper(), ifilename.split('.')[-1])
     if opt.debug:
         print(ofilename)
@@ -74,7 +68,7 @@ def run(opts):
             elif pfile[0].isdigit() or pfile.startswith("Photo"):
                 rename_pic(pfile, opts, label="V")
             else:
-                print("Don't know how to handle {}".format(pfile))
+                print(f"Don't know how to handle {pfile}")
 
 
 if __name__ == "__main__":
@@ -87,7 +81,7 @@ if __name__ == "__main__":
     parser.add_argument("-f", "--full", dest="full", action="store_true",
                         help="Make tag YYYYMMDD.")
     parser.add_argument("--version", action="version",
-                        version="%(prog)s {}".format(VERSION))
+                        version=f"%(prog)s {VERSION}")
     parser.set_defaults(debug=False, full=False)
 
     args = parser.parse_args()

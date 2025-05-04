@@ -2,7 +2,7 @@ import argparse
 import json
 import pathlib
 
-from prettytable import PrettyTable, MARKDOWN
+from prettytable import MARKDOWN, PrettyTable
 
 
 def main(opts: argparse.Namespace) -> None:
@@ -29,7 +29,8 @@ def main(opts: argparse.Namespace) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("game_mapping", type=pathlib.Path, help="The mapping file with the game configuration.")
+    parser.add_argument("game_mapping", type=pathlib.Path,
+                        help="The mapping file with the game configuration.")
     parser.add_argument("controller", help="The controller type for the table.")
     parser.add_argument("-m", "--markdown", action="store_true", help="Format table in Markdown.")
 

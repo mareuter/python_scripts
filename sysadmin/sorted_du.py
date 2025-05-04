@@ -27,12 +27,9 @@ def get_human_size(byte_value):
             suffix = i - 1
             break
         suffix = i
-    if dval < 10.0 and dval > 0:
-        dval_str = "{:.1f}".format(dval)
-    else:
-        dval_str = "{}".format(int(round(dval)))
+    dval_str = f"{dval:.1f}" if dval < 10.0 and dval > 0 else f"{int(round(dval))}"
 
-    human_size = "{:>3s}{}".format(dval_str, SIZE_SUFFIXES[suffix])
+    human_size = f"{dval_str:>3s}{SIZE_SUFFIXES[suffix]}"
     return human_size
 
 
@@ -54,6 +51,6 @@ for value in values:
 sorted_dirs = sorted(dirs, key=itemgetter(0), reverse=True)
 
 for dsize, dname in sorted_dirs:
-    print("{}\t{}".format(get_human_size(dsize), dname))
+    print(f"{get_human_size(dsize)}\t{dname}")
 
 print(f'{get_human_size(total)}\t.')

@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-from apiclient import discovery
 import argparse
 from datetime import datetime, timedelta
-import httplib2
-from oauth2client import client
-from oauth2client import tools
-from oauth2client.file import Storage
 import os
+
+from apiclient import discovery
+import httplib2
+from oauth2client import client, tools
+from oauth2client.file import Storage
 import pandas
 
 VERSION = "1.0.0"
@@ -20,7 +20,7 @@ APPLICATION_NAME = 'Race Training Scheduler'
 
 
 def create_training_event(tday, tsummary):
-    """Create a training event dictionary
+    """Create a training event dictionary.
 
     Parameters
     ----------
@@ -48,8 +48,7 @@ def create_training_event(tday, tsummary):
 
 
 def find_start_day(rday, tschedule):
-    """Find the training start day from knowing the race day and training
-       schedule.
+    """Find training start day from knowing the race day and training schedule.
 
     Parameters
     ----------
@@ -94,7 +93,7 @@ def get_calendar_id(api, calendar_name):
 
 
 def get_credentials(flags):
-    """Gets valid user credentials from storage.
+    """Get valid user credentials from storage.
 
     If nothing has been stored, or if the stored credentials are invalid,
     the OAuth2 flow is completed to obtain the new credentials.
@@ -120,10 +119,7 @@ def get_credentials(flags):
     if not credentials or credentials.invalid:
         flow = client.flow_from_clientsecrets(os.path.expanduser(CLIENT_SECRET_FILE), SCOPES)
         flow.user_agent = APPLICATION_NAME
-        if flags:
-            credentials = tools.run_flow(flow, store, flags)
-        else:  # Needed only for compatibility with Python 2.6
-            credentials = tools.run(flow, store)
+        credentials = tools.run_flow(flow, store, flags)
         print('Storing credentials to ' + credential_path)
     return credentials
 
@@ -160,12 +156,12 @@ def make_description():
     return " ".join(result)
 
 
-def run(opts):
+def run(opts: argparse.Namespace):
     """Run the main program elements.
 
     Parameters
     ----------
-    opts : namespace
+    opts : argparse.Namespace
         The object containing the options from the command-line.
     """
     training_schedule = pandas.read_csv(fix_path(opts.training_schedule), index_col=0)
@@ -181,7 +177,7 @@ def run(opts):
     calendar_id = get_calendar_id(service, opts.calendar_name)
 
     for week, row in training_schedule.iterrows():
-        print("Week {}".format(week))
+        print(f"Week {week}")
 
         for run in row:
             if opts.debug:
@@ -200,7 +196,8 @@ def run(opts):
 
 if __name__ == '__main__':
     default_format = argparse.ArgumentDefaultsHelpFormatter
-    # The parents keyword needs to be used in order to add command-line arguments from the OAuth2 package.
+    # The parents keyword needs to be used in order to add command-line
+    # arguments from the OAuth2 package.
     parser = argparse.ArgumentParser(description=make_description(), formatter_class=default_format,
                                      parents=[tools.argparser])
 
@@ -209,7 +206,7 @@ if __name__ == '__main__':
     parser.add_argument("-c", "--cal-name", dest="calendar_name", default="Running",
                         help="Set the name of the Google Calendar")
     parser.add_argument("--version", action="version",
-                        version="%(prog)s {}".format(VERSION))
+                        version=f"%(prog)s {VERSION}")
     parser.add_argument("-s", "--start-only", dest="start_only", action="store_true",
                         help="Print the training start day and exit.")
     parser.add_argument("race_day", help="The date of the race in YYYY/MM/DD format")

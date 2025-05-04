@@ -9,7 +9,7 @@ import copy_data
 
 
 def main(opts: argparse.Namespace) -> None:
-    if constants.DATA_DIRECTORY != pathlib.Path.cwd():
+    if pathlib.Path.cwd() != constants.DATA_DIRECTORY:
         print(f"Please run from {str(constants.DATA_DIRECTORY)}")
         sys.exit(255)
 

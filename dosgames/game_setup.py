@@ -54,10 +54,7 @@ def main(opts: argparse.Namespace) -> None:
     media_line.append(media_option)
 
     cmd = []
-    if type(runner) == list:
-        cmd.extend(runner)
-    else:
-        cmd.append(runner)
+    cmd.extend(runner) if type(runner) is list else cmd.append(runner)
     cmd.append("-conf")
     cmd.append(str(RUNNERS[opts.runner]["config"]))
     cmd.append("-set ver=6.22")
@@ -81,7 +78,9 @@ if __name__ == "__main__":
 
     parser.add_argument("media_type", choices=["floppy", "cdrom"], help="Set the media type")
     parser.add_argument("media", help="List or glob of images.")
-    parser.add_argument("-r", "--runner", default="dosbox-x", choices=["dosbox", "dosbox-x", "dosbox-staging"], help="Pick the runner.")
+    parser.add_argument("-r", "--runner", default="dosbox-x",
+                        choices=["dosbox", "dosbox-x", "dosbox-staging"],
+                        help="Pick the runner.")
     parser.add_argument("-v", "--verbose", action="store_true", help="Increase script verbosity.")
     parser.add_argument("-a", "--altdir", type=pathlib.Path, help="Provide an alternate read directory.")
 
