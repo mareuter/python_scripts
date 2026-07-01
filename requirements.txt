@@ -17,4 +17,4 @@ pandas
 # weather
 aioinflux
 # dev
-pre-commit
+prek
